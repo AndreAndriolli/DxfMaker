@@ -1,18 +1,18 @@
 import DxfDrawMaker
-from imports import *
 from DocDxf import MakeDocDxf
 from XlsxInfoExtraction import XlsxInfoExtraction
 from DrawTables import DrawTableFromDf
 
+# Generating The Dxf file, that will get all table prints.
 doc_dxf = MakeDocDxf()
 
 # Xlsx initial doc
-directory_path = r'C:\2.AndreAndriolli\GeraDxf_v2\Arquivos Iniciais'
+# directory_path = r''
 xlsx_file_name = r'eixos1-a-b-c-d.xlsx'
-initial_xlsx_path = os.path.join(directory_path, xlsx_file_name)
+# initial_xlsx_path = os.path.join(directory_path, xlsx_file_name)
 
 # Load the initial file xlsx
-doc_xlsx = XlsxInfoExtraction(initial_xlsx_path)
+doc_xlsx = XlsxInfoExtraction(xlsx_file_name)
 
 # format_and_text is in format:
 # [(dict_cell_format, cell_text, Merged_cells, values_with_border), ...]
@@ -24,16 +24,6 @@ format_and_text = doc_xlsx.get_row_format_and_text(1, 'Plan1')
 
 # Extracting df from the specified sheet of the xlsx file
 df = doc_xlsx.df_from_sheet_in_xlsx('Plan1', 1)
-
-
-
-
-
-
-
-
-
-
 
 
 # ------------------------------------ Draw the elements on dxf ----------------------------------------------
@@ -69,4 +59,3 @@ inst_table.write_df_info()
 doc_dxf.save_dxf(r'UTAs.dxf')
 
 print('Done1')
-

@@ -20,6 +20,3 @@ class MakeDocDxf:
     def save_dxf(self, path_saida='Output Dxf'):
         self.doc.saveas(path_saida)  # Salving Dxf File
         print(f'Doc: "{path_saida}" saved!')
-
-
-
